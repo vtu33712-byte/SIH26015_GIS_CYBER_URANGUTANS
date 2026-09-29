@@ -178,8 +178,7 @@ function Evidence({ navigate }: { navigate: (view: View) => void }) {
 
   const defaultCards = [
     { id: 'IMG-1024', place: 'Kovilur', asset: 'WHS-021 · Check Dam', date: '11 Sep 2026 · 10:42', lat: 12.970000, lng: 80.006000, water: 'Poor', condition: 'Moderate', imgClass: 'img-0' },
-    { id: 'IMG-1025', place: 'Kovilur', asset: 'WHS-028 · Farm Pond', date: '10 Sep 2026 · 14:18', lat: 12.975400, lng: 80.012000, water: 'Moderate', condition: 'Good', imgClass: 'img-1' },
-    { id: 'IMG-1028', place: 'Madurantakam', asset: 'WHS-009 · Percolation Pond', date: '08 Sep 2026 · 09:05', lat: 12.981200, lng: 79.998000, water: 'Good', condition: 'Good', imgClass: 'img-2' }
+    { id: 'IMG-1025', place: 'Kovilur', asset: 'WHS-028 · Farm Pond', date: '10 Sep 2026 · 14:18', lat: 12.975400, lng: 80.012000, water: 'Moderate', condition: 'Good', imgClass: 'img-1' }
   ]
 
   return (
@@ -911,8 +910,7 @@ function PublicEvidence() {
   const [customImages, setCustomImages] = useState<StoredGeoEvidence[]>(loadStoredGeoEvidence)
   const defaultImages = [
     { id: 'IMG-1024', place: 'Kovilur', date: '11 Sep 2026', asset: 'WHS-021 · Check Dam', imgClass: 'img-0', water: 'Poor', condition: 'Moderate' },
-    { id: 'IMG-1025', place: 'Kovilur', date: '08 Sep 2026', asset: 'WHS-028 · Farm Pond', imgClass: 'img-1', water: 'Moderate', condition: 'Good' },
-    { id: 'IMG-1028', place: 'Madurantakam', date: '02 Sep 2026', asset: 'WHS-009 · Percolation Pond', imgClass: 'img-2', water: 'Good', condition: 'Good' }
+    { id: 'IMG-1025', place: 'Kovilur', date: '08 Sep 2026', asset: 'WHS-028 · Farm Pond', imgClass: 'img-1', water: 'Moderate', condition: 'Good' }
   ]
 
   const currentSelectedCustom = customImages.find(x => x.id === selected)
