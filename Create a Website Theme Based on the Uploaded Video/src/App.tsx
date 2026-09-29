@@ -177,7 +177,7 @@ function Evidence({ navigate }: { navigate: (view: View) => void }) {
   }, [])
 
   const defaultCards = [
-    { id: 'IMG-1024', place: 'Kovilur', asset: 'WHS-021 · Check Dam', date: '11 Sep 2026 · 10:42', lat: 12.970000, lng: 80.006000, water: 'Poor', condition: 'Moderate', imgClass: 'img-0' },
+    { id: 'IMG-1024', place: 'Madurantakam', asset: 'WHS-021 · Check Dam', date: '11 Sep 2026 · 10:42', lat: 12.981200, lng: 79.998000, water: 'Poor', condition: 'Moderate', imgClass: 'img-0' },
     { id: 'IMG-1025', place: 'Kovilur', asset: 'WHS-028 · Farm Pond', date: '10 Sep 2026 · 14:18', lat: 12.975400, lng: 80.012000, water: 'Moderate', condition: 'Good', imgClass: 'img-1' }
   ]
 
@@ -300,12 +300,12 @@ function GovernmentImageModal({ id, customItem, close, analyze, navigate }: { id
           <img src={imgSrc} alt={id} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}/>
         </div>
         <span className="eyebrow">GEO-CODED FIELD EVIDENCE</span>
-        <h2>{id} · {customItem?.village || (id === 'IMG-1028' ? 'Madurantakam' : 'Kovilur')}</h2>
+        <h2>{id} · {customItem?.village || (id === 'IMG-1024' ? 'Madurantakam' : 'Kovilur')}</h2>
         <div className="modal-detail-grid">
-          <span>GPS <b>{customItem ? `${customItem.latitude.toFixed(6)}, ${customItem.longitude.toFixed(6)}` : '12.970000, 80.006000'}</b></span>
+          <span>GPS <b>{customItem ? `${customItem.latitude.toFixed(6)}, ${customItem.longitude.toFixed(6)}` : id === 'IMG-1024' ? '12.981200, 79.998000' : '12.970000, 80.006000'}</b></span>
           <span>Captured <b>{customItem?.date || '11 Sep 2026 · 10:42'}</b></span>
-          <span>Watershed <b>{customItem?.watershed || 'WS-001 · Kovilur'}</b></span>
-          <span>Village <b>{customItem?.village || 'Kovilur'}</b></span>
+          <span>Watershed <b>{customItem?.watershed || (id === 'IMG-1024' ? 'WS-003 · Madurantakam' : 'WS-001 · Kovilur')}</b></span>
+          <span>Village <b>{customItem?.village || (id === 'IMG-1024' ? 'Madurantakam' : 'Kovilur')}</b></span>
           <span>Asset <b>{customItem ? `${customItem.assetId} · ${customItem.assetType}` : 'WHS-021 · Check Dam'}</b></span>
           <span>Officer <b>A. Suresh · Field Officer</b></span>
         </div>
@@ -909,7 +909,7 @@ function PublicEvidence() {
   const [selected, setSelected] = useState<string | null>(null)
   const [customImages, setCustomImages] = useState<StoredGeoEvidence[]>(loadStoredGeoEvidence)
   const defaultImages = [
-    { id: 'IMG-1024', place: 'Kovilur', date: '11 Sep 2026', asset: 'WHS-021 · Check Dam', imgClass: 'img-0', water: 'Poor', condition: 'Moderate' },
+    { id: 'IMG-1024', place: 'Madurantakam', date: '11 Sep 2026', asset: 'WHS-021 · Check Dam', imgClass: 'img-0', water: 'Poor', condition: 'Moderate' },
     { id: 'IMG-1025', place: 'Kovilur', date: '08 Sep 2026', asset: 'WHS-028 · Farm Pond', imgClass: 'img-1', water: 'Moderate', condition: 'Good' }
   ]
 
@@ -1008,7 +1008,7 @@ function ImageModal({ id, customImg, close }: { id: string; customImg?: StoredGe
           <div className="modal-image img-1"></div>
         )}
         <span className="eyebrow">PUBLIC GEO-CODED IMAGE</span>
-        <h2>{id} · {customImg?.village || 'Kovilur'}</h2>
+        <h2>{id} · {customImg?.village || (id === 'IMG-1024' ? 'Madurantakam' : 'Kovilur')}</h2>
         <p>{customImg?.date || '11 Sep 2026'} · {customImg ? `${customImg.assetId} (${customImg.assetType})` : 'WHS-021 · Check Dam'}</p>
         <div className="public-image-stats">
           <span>Water <b>{customImg?.water || 'Poor'}</b></span>
