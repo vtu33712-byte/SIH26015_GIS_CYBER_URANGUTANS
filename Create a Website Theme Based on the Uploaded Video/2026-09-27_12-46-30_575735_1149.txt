@@ -1,0 +1,81 @@
+# Terminal Full Output
+# Terminal: sandboxsrc
+# Command: python3 - <<'PY'
+from pathlib import Path
+p=Path('/mnt/357877c1-05f8-4c99-a1a9-1a42b1e439ad/jal-impact-source/src/App.tsx')
+s=p.read_text()
+old='function FlyToTarget({ target, clear }: { target: string | null; clear: () => void }) { const map = useMap(); useEffect(() => { if (target && coords[target]) { map.flyTo(coords[target], 15, { duration: 1.1 }); const timer = window.setTimeout(clear, 1400); return () => window.clearTimeout(timer) } }, [target, map, clear]); return null }'
+new=old+"\nfunction ObservationFocus({ coordinates }: { coordinates: [number, number] | null }) { const map = useMap(); useEffect(() => { if (coordinates) map.flyTo(coordinates, 16, { duration: 1.1 }) }, [coordinates, map]); return null }"
+assert s.count(old)==1
+s=s.replace(old,new)
+old='function GovernmentGIS({ target, clearTarget, navigate, onOpenEvidence, onAnalyzeEvidence, onCompareEvidence }: { target: string | null; clearTarget: () => void; navigate: (view: View) => void; onOpenEvidence: (id: string) => void; onAnalyzeEvidence: (id: string) => void; onCompareEvidence: (id: string) => void }) {'
+new='function GovernmentGIS({ target, observationPoint, clearTarget, navigate, onOpenEvidence, onAnalyzeEvidence, onCompareEvidence }: { target: string | null; observationPoint: [number, number] | null; clearTarget: () => void; navigate: (view: View) => void; onOpenEvidence: (id: string) => void; onAnalyzeEvidence: (id: string) => void; onCompareEvidence: (id: string) => void }) {'
+assert s.count(old)==1
+s=s.replace(old,new)
+old='<FlyToTarget target={selected} clear={clearTarget}/>'
+new=old+'<ObservationFocus coordinates={observationPoint}/>'
+assert s.count(old)==1
+s=s.replace(old,new)
+needle='      <GovernmentMapControls/>'
+marker='      {observationPoint && <CircleMarker center={observationPoint} radius={14} pathOptions={{ color: \'#ecfbff\', fillColor: \'#1a9ba5\', fillOpacity: .96, weight: 4 }}><Tooltip permanent direction="top">FIELD GPS</Tooltip><Popup><div className="gov-popup"><b>FIELD OBSERVATION LOCATION</b><small>Captured device GPS</small><p>Coordinates: <strong>{observationPoint[0].toFixed(6)}, {observationPoint[1].toFixed(6)}</strong><br/>Status: Pending Verification</p></div></Popup></CircleMarker>}\n'+needle
+assert s.count(needle)==1
+s=s.replace(needle,marker)
+p.write_text(s)
+print('Added exact-coordinate focus and field GPS marker.')
+PY
+# PID: 1149
+# Timestamp: 2026-09-27_12-46-30.575735
+# Original Length: 4894 characters
+# ----------------------------------------
+
+[32mubuntu@sandbox:~$ [0mpython3 - <<'PY'
+from pathlib import Path
+p=Path('/mnt/357877c1-05f8-4c99-a1a9-1a42b1e439ad/jal-impact-source/src/App.tsx')
+s=p.read_text()
+old='function FlyToTarget({ target, clear }: { target: string | null; clear: () => void }) { const map = useMap(); useEffect(() => { if (target && coords[target]) { map.flyTo(coords[target], 15, { duration: 1.1 }); const timer = window.setTimeout(clear, 1400); return () => window.clearTimeout(timer) } }, [target, map, clear]); return null }'
+new=old+"\nfunction ObservationFocus({ coordinates }: { coordinates: [number, number] | null }) { const map = useMap(); useEffect(() => { if (coordinates) map.flyTo(coordinates, 16, { duration: 1.1 }) }, [coordinates, map]); return null }"
+assert s.count(old)==1
+s=s.replace(old,new)
+old='function GovernmentGIS({ target, clearTarget, navigate, onOpenEvidence, onAnalyzeEvidence, onCompareEvidence }: { target: string | null; clearTarget: () => void; navigate: (view: View) => void; onOpenEvidence: (id: string) => void; onAnalyzeEvidence: (id: string) => void; onCompareEvidence: (id: string) => void }) {'
+new='function GovernmentGIS({ target, observationPoint, clearTarget, navigate, onOpenEvidence, onAnalyzeEvidence, onCompareEvidence }: { target: string | null; observationPoint: [number, number] | null; clearTarget: () => void; navigate: (view: View) => void; onOpenEvidence: (id: string) => void; onAnalyzeEvidence: (id: string) => void; onCompareEvidence: (id: string) => void }) {'
+assert s.count(old)==1
+s=s.replace(old,new)
+old='<FlyToTarget target={selected} clear={clearTarget}/>'
+new=old+'<ObservationFocus coordinates={observationPoint}/>'
+assert s.count(old)==1
+s=s.replace(old,new)
+needle='      <GovernmentMapControls/>'
+marker='      {observationPoint && <CircleMarker center={observationPoint} radius={14} pathOptions={{ color: \'#ecfbff\', fillColor: \'#1a9ba5\', fillOpacity: .96, weight: 4 }}><Tooltip permanent direction="top">FIELD GPS</Tooltip><Popup><div className="gov-popup"><b>FIELD OBSERVATION LOCATION</b><small>Captured device GPS</small><p>Coordinates: <strong>{observationPoint[0].toFixed(6)}, {observationPoint[1].toFixed(6)}</strong><br/>Status: Pending Verification</p></div></Popup></CircleMarker>}\n'+needle
+assert s.count(needle)==1
+s=s.replace(needle,marker)
+p.write_text(s)
+print('Added exact-coordinate focus and field GPS marker.')
+PY
+{
+source /home/ubuntu/.user_env && cd /home/ubuntu && python3 - <<'PY'
+from pathlib import Path
+p=Path('/mnt/357877c1-05f8-4c99-a1a9-1a42b1e439ad/jal-impact-source/src/App.tsx')
+s=p.read_text()
+old='function FlyToTarget({ target, clear }: { target: string | null; clear: () => void }) { const map = useMap(); useEffect(() => { if (target && coords[target]) { map.flyTo(coords[target], 15, { duration: 1.1 }); const timer = window.setTimeout(clear, 1400); return () => window.clearTimeout(timer) } }, [target, map, clear]); return null }'
+new=old+"\nfunction ObservationFocus({ coordinates }: { coordinates: [number, number] | null }) { const map = useMap(); useEffect(() => { if (coordinates) map.flyTo(coordinates, 16, { duration: 1.1 }) }, [coordinates, map]); return null }"
+assert s.count(old)==1
+s=s.replace(old,new)
+old='function GovernmentGIS({ target, clearTarget, navigate, onOpenEvidence, onAnalyzeEvidence, onCompareEvidence }: { target: string | null; clearTarget: () => void; navigate: (view: View) => void; onOpenEvidence: (id: string) => void; onAnalyzeEvidence: (id: string) => void; onCompareEvidence: (id: string) => void }) {'
+new='function GovernmentGIS({ target, observationPoint, clearTarget, navigate, onOpenEvidence, onAnalyzeEvidence, onCompareEvidence }: { target: string | null; observationPoint: [number, number] | null; clearTarget: () => void; navigate: (view: View) => void; onOpenEvidence: (id: string) => void; onAnalyzeEvidence: (id: string) => void; onCompareEvidence: (id: string) => void }) {'
+assert s.count(old)==1
+s=s.replace(old,new)
+old='<FlyToTarget target={selected} clear={clearTarget}/>'
+new=old+'<ObservationFocus coordinates={observationPoint}/>'
+assert s.count(old)==1
+s=s.replace(old,new)
+needle='      <GovernmentMapControls/>'
+marker='      {observationPoint && <CircleMarker center={observationPoint} radius={14} pathOptions={{ color: \'#ecfbff\', fillColor: \'#1a9ba5\', fillOpacity: .96, weight: 4 }}><Tooltip permanent direction="top">FIELD GPS</Tooltip><Popup><div className="gov-popup"><b>FIELD OBSERVATION LOCATION</b><small>Captured device GPS</small><p>Coordinates: <strong>{observationPoint[0].toFixed(6)}, {observationPoint[1].toFixed(6)}</strong><br/>Status: Pending Verification</p></div></Popup></CircleMarker>}\n
+'+needle
+assert s.count(needle)==1
+s=s.replace(needle,marker)
+p.write_text(s)
+print('Added exact-coordinate focus and field GPS marker.')
+PY
+}
+Added exact-coordinate focus and field GPS marker.
+[32mubuntu@sandbox:~$ [0m

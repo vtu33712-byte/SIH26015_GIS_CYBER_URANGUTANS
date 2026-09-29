@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="260" viewBox="0 0 440 260">
+<defs><linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#cceeff"/><stop offset="1" stop-color="#f4fbff"/></linearGradient></defs>
+<rect width="440" height="260" fill="url(#sky)"/><path d="M25 190 Q100 135 170 190 T315 190 T430 185" fill="none" stroke="#a87845" stroke-width="35"/><path d="M30 160 Q110 115 180 160 T320 160 T425 155" fill="none" stroke="#5c9b4c" stroke-width="16"/><circle cx="70" cy="65" r="34" fill="#67a951"/><circle cx="115" cy="55" r="40" fill="#5b9c4a"/>
+<rect x="15" y="15" width="410" height="52" rx="12" fill="rgba(255,255,255,.88)"/>
+<text x="32" y="39" font-family="Arial" font-size="17" font-weight="700" fill="#16324f">Contour Bund • Mecheri</text>
+<text x="32" y="58" font-family="Arial" font-size="11" fill="#526b7d">INT-003 • 11.6851, 78.2023</text>
+<text x="220" y="246" text-anchor="middle" font-family="Arial" font-size="10" fill="#35576e">REPRESENTATIVE PROTOTYPE IMAGE • DEMO DATA</text>
+</svg>

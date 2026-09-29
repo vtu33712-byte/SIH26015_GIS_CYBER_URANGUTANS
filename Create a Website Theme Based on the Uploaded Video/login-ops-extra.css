@@ -1,0 +1,17 @@
+
+/* Login, route-guard and subtle panel motion refinements */
+.video-page .login-visual{background:transparent!important}
+.video-page .login-panel{background:rgba(255,255,255,.055)!important;border-left:1px solid rgba(218,245,250,.16)}
+.video-page .restricted-page{position:relative;z-index:1;min-height:100vh;background:transparent!important}
+.video-page .restricted-card{background:rgba(7,27,39,.77)!important;border:1px solid rgba(218,245,250,.2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.video-page .login-inner{color:#eff8fa}.video-page .login-inner h2{color:#f3fbfd}.video-page .login-lead,.video-page .form-title span{color:#bfd3d9}
+.login-error{margin:0;padding:10px 12px;border:1px solid rgba(244,112,112,.32);border-radius:9px;background:rgba(169,51,58,.13);color:#ffb3b3;font-size:12px}
+.video-theme .gov-welcome,.video-theme .public-hero,.video-theme .hero,.video-theme .signal-grid>article,.video-theme .signal-bar>div,.video-theme .field-cta,.video-theme .gov-feed,.video-theme .public-kpis>button,.video-theme .insight-list>article,.video-theme .heat-card,.video-theme .comparison-results{background:rgba(255,255,255,.075)!important;border:1px solid rgba(218,245,250,.16);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 15px 42px rgba(2,12,20,.18)}
+.video-theme .page h1,.video-theme .page h2,.video-theme .page h3{color:#f0f8fa}
+.video-theme .sidebar nav button{animation:nav-glass-entry .32s both}
+.video-theme .sidebar nav button:nth-child(2){animation-delay:.035s}.video-theme .sidebar nav button:nth-child(3){animation-delay:.07s}.video-theme .sidebar nav button:nth-child(4){animation-delay:.105s}.video-theme .sidebar nav button:nth-child(5){animation-delay:.14s}
+.video-theme .gov-evidence-card,.video-theme .public-kpis>button,.video-theme .ops-kpis>button{transition:transform .22s,border-color .22s,box-shadow .22s}
+.video-theme .gov-evidence-card:hover,.video-theme .public-kpis>button:hover,.video-theme .ops-kpis>button:hover{transform:translateY(-3px);border-color:rgba(103,225,220,.38);box-shadow:0 20px 48px rgba(2,12,20,.27)}
+@keyframes nav-glass-entry{from{opacity:0;transform:translateX(-7px)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.video-theme .sidebar nav button,.video-theme .gov-evidence-card,.video-theme .public-kpis>button,.video-theme .ops-kpis>button{animation:none!important;transition:none!important}}
+@media(max-width:760px){.video-page .login-visual{min-height:42vh}.video-page .login-panel{border-left:0;border-top:1px solid rgba(218,245,250,.14)}.video-page .restricted-card{margin:18px}.video-theme .page h1{line-height:1.05}}

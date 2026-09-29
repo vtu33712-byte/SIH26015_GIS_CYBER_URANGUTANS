@@ -1,0 +1,312 @@
+Continue building the JAL-IMPACT frontend prototype.
+
+IMPORTANT:
+
+Implement TWO completely different user experiences:
+
+1. PUBLIC USER
+2. GOVERNMENT USER
+
+Use React state/context for frontend role management.
+
+This is a frontend-only prototype.
+
+Do NOT create fake backend APIs.
+
+==================================================
+LOGIN EXPERIENCE
+==================================================
+
+Create a premium split-screen login page.
+
+This should be one of the most polished pages.
+
+Background:
+
+Use a subtle animated watershed/satellite visual.
+
+Show:
+
+JAL-IMPACT
+
+"From Geo-Coded Images to Watershed Intelligence."
+
+Below:
+
+"Geospatial Watershed Development Monitoring & Decision Support Platform"
+
+==================================================
+USER TYPE SELECTION
+==================================================
+
+Before login, show two large role cards.
+
+PUBLIC USER
+
+Icon:
+👤
+
+Text:
+
+PUBLIC USER
+
+"Explore watershed data and development insights"
+
+Button:
+
+[ Continue as Public ]
+
+GOVERNMENT USER
+
+Icon:
+🏛️
+
+Text:
+
+GOVERNMENT USER
+
+"Monitor, inspect and manage watershed assets"
+
+Button:
+
+[ Government Login ]
+
+The selected role must visually highlight.
+
+==================================================
+PUBLIC LOGIN
+==================================================
+
+Show:
+
+Public User
+
+Email / Mobile Number
+
+Password
+
+[ Login ]
+
+Alternative:
+
+[ Continue as Guest ]
+
+Public users can access only public watershed information.
+
+Do NOT show:
+
+- Inspection
+- Field Observation
+- Government Alerts
+- Government-only management
+- Asset editing
+- Administrative controls
+
+==================================================
+GOVERNMENT LOGIN
+==================================================
+
+Show:
+
+Government User Login
+
+Official Email
+
+Password
+
+Role dropdown:
+
+Administrator
+District Officer
+Field Officer
+
+Button:
+
+[ Secure Government Login ]
+
+Security section:
+
+🔒 Authorized Government Access
+
+"Restricted monitoring and field-operation features are available only to authorized personnel."
+
+==================================================
+DEMO LOGIN
+==================================================
+
+Public:
+
+Email:
+public@jalimpact.demo
+
+Password:
+demo123
+
+Government:
+
+Email:
+officer@jalimpact.gov.demo
+
+Password:
+demo123
+
+Provide:
+
+[ Try Public Demo ]
+
+[ Try Government Demo ]
+
+These buttons should automatically authenticate the corresponding demo user using frontend state.
+
+Display:
+
+"Demo credentials for prototype presentation."
+
+==================================================
+ROLE MODEL
+==================================================
+
+Create:
+
+UserRole:
+
+"public"
+"government"
+
+Government roles:
+
+"administrator"
+"district_officer"
+"field_officer"
+
+Create a frontend AuthContext / RoleContext.
+
+Store:
+
+- logged-in state
+- user role
+- government subrole
+
+Use localStorage for demo login persistence.
+
+==================================================
+ROLE-BASED SIDEBAR
+==================================================
+
+If:
+
+role === "public"
+
+show:
+
+Overview
+Watershed Explorer
+GIS Map
+Geo-Coded Images
+Watershed Assets
+Development Insights
+Public Reports
+
+If:
+
+role === "government"
+
+show:
+
+Dashboard
+GIS Map
+Geo-Coded Images
+Watersheds
+Watershed Assets
+Inspections
+Field Observation
+Before / After
+Spatial Analytics
+Priority Intervention
+Alerts
+Reports
+
+==================================================
+ROUTE PROTECTION
+==================================================
+
+Do NOT merely hide government pages.
+
+Navigation routing must also prevent public users from accessing:
+
+/inspections
+/field-observation
+/before-after
+/alerts
+/government-reports
+
+If a public user attempts to access a restricted route, show:
+
+🔒 RESTRICTED ACCESS
+
+"This feature is available only to authorized government users."
+
+Feature:
+
+Field Inspection
+
+Button:
+
+[ Return to Public Portal ]
+
+Do not expose government data.
+
+==================================================
+GOVERNMENT SUBROLE PERMISSIONS
+==================================================
+
+Field Officers:
+
+Dashboard
+GIS
+Images
+Inspections
+Field Observation
+Before/After
+Alerts
+
+District Officers:
+
+All monitoring
+Analytics
+Priority Intervention
+Reports
+
+Administrators:
+
+Everything
+
+==================================================
+LOGIN ANIMATION
+==================================================
+
+When selecting PUBLIC USER:
+
+Use a smooth blue/water transition.
+
+When selecting GOVERNMENT USER:
+
+Use a professional deep-blue transition.
+
+Government mode should visually communicate:
+
+SECURE GOVERNMENT ACCESS
+
+The login card should transition smoothly between modes.
+
+==================================================
+ROLE CHANGE ANIMATION
+==================================================
+
+When switching between Public and Government demo:
+
+Animate the sidebar/navigation.
+
+Make it visually obvious that permissions have changed.
+
+The application must never expose government-only information to public users.

@@ -1,0 +1,510 @@
+Perform the final integration and polish of the JAL-IMPACT frontend prototype.
+
+The application must now behave as ONE complete integrated watershed intelligence platform.
+
+==================================================
+CORE VISUAL STORY
+==================================================
+
+The entire UI must communicate:
+
+FIELD IMAGE
+↓
+GPS
+↓
+GIS
+↓
+WATERSHED
+↓
+ASSET
+↓
+OBSERVATION
+↓
+TEMPORAL CHANGE
+↓
+SPATIAL ANALYSIS
+↓
+PRIORITY
+↓
+FIELD INSPECTION
+↓
+GOVERNMENT DECISION
+
+Public users see:
+
+DATA
+↓
+VISUALIZATION
+↓
+DEVELOPMENT INSIGHT
+
+Government users see:
+
+DATA
+↓
+ANALYSIS
+↓
+INSPECTION
+↓
+DECISION
+
+==================================================
+PUBLIC SIH DEMO
+==================================================
+
+Login as Public User
+
+↓
+
+Public Dashboard
+
+↓
+
+Explore GIS
+
+↓
+
+Select WS-001
+
+↓
+
+Watershed Details Drawer
+
+↓
+
+Explore Watershed
+
+↓
+
+Public Geo-Coded Images
+
+↓
+
+View Image
+
+↓
+
+View Development Insights
+
+↓
+
+Public Report
+
+Public user NEVER sees:
+
+Inspection
+
+Field Observation
+
+Government Alerts
+
+Internal Reports
+
+Administrative controls
+
+==================================================
+GOVERNMENT SIH DEMO
+==================================================
+
+Login
+
+↓
+
+Government User
+
+↓
+
+District Officer
+
+↓
+
+Government Dashboard
+
+↓
+
+Click Critical Zones KPI
+
+↓
+
+Critical Zones Drawer opens
+
+↓
+
+Select WHS-021
+
+↓
+
+GIS Map opens
+
+↓
+
+Map smoothly zooms to WHS-021
+
+↓
+
+Marker pulses
+
+↓
+
+Asset Popup appears
+
+↓
+
+Click View Evidence
+
+↓
+
+Geo-Coded Image Modal opens
+
+↓
+
+Click Analyze
+
+↓
+
+AI analysis animation
+
+↓
+
+Scanning visual evidence...
+
+↓
+
+Reading geo-spatial context...
+
+↓
+
+Comparing field indicators...
+
+↓
+
+Generating observation...
+
+↓
+
+Results appear:
+
+Water Presence:
+82%
+
+Vegetation:
+90%
+
+Structure Damage:
+64%
+
+Possible Erosion:
+51%
+
+↓
+
+Possible degradation observed.
+
+↓
+
+Click Compare
+
+↓
+
+Before / After
+
+↓
+
+Interactive slider
+
+↓
+
+Possible Development Decline
+
+↓
+
+Click View Spatial Impact
+
+↓
+
+Spatial Intelligence Map
+
+↓
+
+Heatmap appears
+
+↓
+
+Priority zone highlighted
+
+↓
+
+Priority Intervention
+
+↓
+
+WHS-021
+
+HIGH PRIORITY
+
+Reasons:
+
+Low water presence
+
+Visible deterioration
+
+Recent negative change
+
+Spatial problem concentration
+
+↓
+
+Recommended:
+
+Field verification
+
+↓
+
+Government user clicks Inspect
+
+↓
+
+Inspection Detail
+
+↓
+
+Start Inspection
+
+↓
+
+Field Observation
+
+↓
+
+GPS captured
+
+↓
+
+Capture / Upload Geo-Coded Image
+
+↓
+
+Enter observations
+
+↓
+
+Submit
+
+↓
+
+Success animation
+
+↓
+
+Observation submitted
+
+↓
+
+Alert generated
+
+↓
+
+Click View on Map
+
+↓
+
+GIS zooms to affected location
+
+↓
+
+Marker pulses
+
+↓
+
+Alert popup
+
+↓
+
+Generate Report
+
+↓
+
+Report loading animation
+
+↓
+
+Report preview modal
+
+↓
+
+AI Watershed Summary
+
+==================================================
+INTERACTION QUALITY
+==================================================
+
+Every major action must have:
+
+- visual feedback
+- loading state when appropriate
+- contextual result
+- next action
+- toast where appropriate
+
+Use:
+
+Popups
+
+Tooltips
+
+Modals
+
+Side drawers
+
+Bottom sheets
+
+Toast notifications
+
+Hover effects
+
+Expandable panels
+
+Confirmation dialogs
+
+Animated markers
+
+==================================================
+ANIMATION PHILOSOPHY
+==================================================
+
+Animations must be:
+
+Professional
+
+Fast
+
+Subtle
+
+Water-inspired
+
+Meaningful
+
+Use:
+
+150–300ms transitions.
+
+Avoid:
+
+- excessive flashing
+- gaming animations
+- huge effects
+- distracting neon
+- slow page transitions
+
+==================================================
+FINAL VISUAL QUALITY
+==================================================
+
+The final application should feel like:
+
+"Google Maps + environmental command center + field inspection system + watershed intelligence dashboard"
+
+But create an ORIGINAL visual identity.
+
+The application should immediately communicate:
+
+Water
+
++
+
+Geospatial Intelligence
+
++
+
+Geo-Coded Field Evidence
+
++
+
+AI-Assisted Analysis
+
++
+
+Watershed Development
+
++
+
+Government Decision Support
+
+==================================================
+FINAL PRIORITIES
+==================================================
+
+Prioritize:
+
+1. Professional water-themed design
+2. Excellent GIS experience
+3. Geo-coded image visualization
+4. Clear role separation
+5. Government inspection workflow
+6. Public transparency
+7. Spatial intelligence
+8. Before/after analysis
+9. Priority intervention
+10. Decision support
+
+==================================================
+STRICT REQUIREMENTS
+==================================================
+
+Do NOT:
+
+- create a generic admin dashboard
+- create a static landing page
+- create fake backend APIs
+- expose government-only information
+- leave major buttons non-functional
+- use excessive neon
+- use excessive glassmorphism
+- use gaming-style UI
+- use meaningless placeholder content
+- create disconnected CRUD pages
+
+Use:
+
+- realistic mock data
+- frontend state
+- React Context
+- React Router
+- reusable components
+- meaningful loading states
+- meaningful error states
+- meaningful empty states
+- meaningful success states
+- restricted access states
+- responsive design
+- accessible interactions
+
+==================================================
+FINAL PRODUCT STATEMENT
+==================================================
+
+The platform must tell one clear story:
+
+"JAL-IMPACT transforms geo-coded field images into spatial watershed intelligence, identifies changes and priority areas, supports field verification, and helps government users make better watershed development decisions."
+
+The final result must be:
+
+HIGH-FIDELITY
+
+PROFESSIONAL
+
+WATER-THEMED
+
+GIS-CENTRIC
+
+INTERACTIVE
+
+ROLE-AWARE
+
+RESPONSIVE
+
+GOVERNMENT-GRADE
+
+SIH-JURY-READY
+
+Make the entire frontend presentation-ready for a Smart India Hackathon jury.

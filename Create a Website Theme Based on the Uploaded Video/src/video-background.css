@@ -1,0 +1,27 @@
+/* Background-video and 3D Globe styling */
+#root{position:relative;min-height:100vh;isolation:isolate}
+.video-backdrop{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#071a2b}
+.video-backdrop video{display:block;width:100%;height:100%;object-fit:cover;opacity:.23;filter:saturate(.78) contrast(1.03)}
+#root>.app,#root>.login,#root>.restricted-page{position:relative;z-index:1}
+.app{background:rgba(245,249,250,.86)!important}
+.app.dark{background:rgba(6,19,31,.84)!important}
+.app.water{background:rgba(237,248,249,.86)!important}
+.app.light{background:rgba(248,251,252,.86)!important}
+.login{background:rgba(247,251,251,.84)}
+.login-visual{position:relative;background:radial-gradient(circle at 65% 30%,rgba(24,126,174,.62) 0,rgba(10,71,110,.68) 36%,rgba(7,26,43,.78) 79%)}
+.login-panel{background:rgba(251,253,253,.92);position:relative;z-index:2}
+.restricted-page{background:radial-gradient(circle at 50% 0,rgba(21,86,123,.75),rgba(7,26,43,.86) 65%)}
+@media(prefers-reduced-motion:reduce){.video-backdrop video{display:none}}
+
+/* Globe background wrappers */
+.login-globe-backdrop{position:absolute;inset:0;z-index:1;overflow:hidden;opacity:.88;display:flex;align-items:center;justify-content:center}
+.login-globe-backdrop canvas{pointer-events:auto}
+.login-visual .login-brand,.login-visual .login-signal{position:relative;z-index:3;pointer-events:none}
+.login-visual .login-brand button,.login-visual .login-brand a{pointer-events:auto}
+.login-map-grid,.login-river,.login-contours{z-index:0}
+
+.app-globe-backdrop{position:fixed;right:-15%;bottom:-10%;width:75vw;height:75vw;max-width:850px;max-height:850px;z-index:0;pointer-events:none;opacity:.25;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .3s ease}
+.app.dark .app-globe-backdrop{opacity:.35}
+.app.water .app-globe-backdrop{opacity:.22}
+@media(max-width:900px){.app-globe-backdrop{width:100vw;height:100vw;right:-30%;bottom:-20%;opacity:.18}}
+

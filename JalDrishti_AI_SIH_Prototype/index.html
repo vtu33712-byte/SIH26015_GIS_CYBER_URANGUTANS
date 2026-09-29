@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JalDrishti AI • SIH Prototype</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="brand-group">
+      <strong>JalDrishti AI</strong>
+      <span>Geospatial Watershed Intelligence &amp; AI Decision Suite</span>
+    </div>
+    <div class="header-actions">
+      <button id="headerRunAnalysisBtn" type="button" class="btn-ai-header">🧠 Run AI Project Analysis</button>
+      <span class="badge">SIH PROTOTYPE</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">SIH SOFTWARE PROTOTYPE • AI WATERSHED AUDIT</p>
+        <h1>Watershed monitoring from <span>field images + spatial analytics</span></h1>
+        <p>Explore representative geo-coded interventions, satellite indicators, change detection, and automated AI project health diagnostics.</p>
+        <div class="hero-buttons">
+          <button id="heroAnalysisBtn" type="button" class="btn-primary btn-hero">⚡ Launch AI Health &amp; Anomaly Analysis</button>
+          <button id="heroReportBtn" type="button" class="btn-secondary btn-hero">📄 View Executive Audit Report</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard KPI Stats -->
+    <section id="stats" class="grid" aria-label="Watershed overview statistics"></section>
+
+    <!-- AI PROJECT INTELLIGENCE & ANALYSIS SUITE -->
+    <section id="aiAnalysisSection" class="panel ai-analysis-panel" aria-label="AI Project Intelligence and Insights">
+      <div class="panel-head">
+        <div>
+          <div class="ai-badge-row">
+            <span class="ai-live-badge"><span class="pulse-dot"></span> AI ANALYSIS ENGINE ACTIVE</span>
+            <span id="analysisScopeBadge" class="tag tag-highlight">Scope: All 8 Watersheds</span>
+          </div>
+          <h2>AI Project Analysis &amp; Diagnostic Suite</h2>
+          <p class="muted">Deep multi-dimensional analysis of ecological health, intervention efficacy, anomaly risks, and 2027–2028 predictive trajectories.</p>
+        </div>
+        <div class="panel-actions">
+          <select id="analysisWatershedScope" class="select-scope" aria-label="Analysis scope selection">
+            <option value="all">Analyze All 8 Watersheds</option>
+          </select>
+          <button id="triggerAnalysisBtn" type="button" class="btn-primary btn-sparkle">⚡ Run AI Analysis</button>
+          <button id="openReportModalBtn" type="button" class="btn-secondary">🖨️ Audit Report</button>
+        </div>
+      </div>
+
+      <!-- Live Analysis Scan Bar -->
+      <div id="analysisScanBar" class="analysis-scan-container" style="display: none;">
+        <div class="scan-status-text">
+          <span id="scanStatusMsg">Scanning spatial layers and satellite indices...</span>
+          <span id="scanPercent">0%</span>
+        </div>
+        <div class="scan-progress-bar">
+          <div id="scanProgressBarFill" class="scan-progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- AI Analysis Tabs -->
+      <div class="ai-tabs-container">
+        <nav class="ai-tabs" role="tablist">
+          <button class="ai-tab active" data-tab="tab-overview" role="tab" aria-selected="true">📊 Executive Health Overview</button>
+          <button class="ai-tab" data-tab="tab-matrix" role="tab" aria-selected="false">🗺️ Watershed Diagnostics Matrix</button>
+          <button class="ai-tab" data-tab="tab-anomalies" role="tab" aria-selected="false">⚠️ AI Anomaly &amp; Risk Alerts <span id="anomalyTabCount" class="tab-count-badge">0</span></button>
+          <button class="ai-tab" data-tab="tab-forecast" role="tab" aria-selected="false">🔮 Predictive 2027–2028 Simulation</button>
+          <button class="ai-tab" data-tab="tab-recommendations" role="tab" aria-selected="false">🎯 Prescriptive AI Action Plan</button>
+        </nav>
+
+        <!-- Tab 1: Executive Overview -->
+        <div id="tab-overview" class="ai-tab-pane active" role="tabpanel">
+          <div class="analysis-hero-grid">
+            <div class="health-gauge-card">
+              <h3>Overall Project Health Index</h3>
+              <div class="gauge-display">
+                <div class="gauge-circle">
+                  <span id="gaugeValue">--</span>
+                  <small>/100</small>
+                </div>
+                <div class="gauge-meta">
+                  <strong id="healthRatingText">Evaluating...</strong>
+                  <p id="healthRatingSubtext">Grounded in vegetation growth, water index, structure condition and land cover.</p>
+                </div>
+              </div>
+            </div>
+            <div class="analysis-quick-stats">
+              <div class="quick-stat-box">
+                <label>Vegetation Trajectory</label>
+                <b id="statVegTrajectory">--</b>
+                <small>Average baseline growth</small>
+              </div>
+              <div class="quick-stat-box">
+                <label>Surface Water Growth</label>
+                <b id="statWaterGrowth">--</b>
+                <small>Expanded reservoir capacity</small>
+              </div>
+              <div class="quick-stat-box">
+                <label>Structure Condition Index</label>
+                <b id="statStructureHealth">--</b>
+                <small>Operational readiness</small>
+              </div>
+              <div class="quick-stat-box">
+                <label>High Risk Anomalies</label>
+                <b id="statRiskCount" class="text-danger">--</b>
+                <small>Require immediate field check</small>
+              </div>
+            </div>
+          </div>
+          <div id="aiOverviewSummaryNarrative" class="ai-narrative-card"></div>
+        </div>
+
+        <!-- Tab 2: Watershed Diagnostics Matrix -->
+        <div id="tab-matrix" class="ai-tab-pane" role="tabpanel">
+          <div class="table-responsive">
+            <table class="diagnostic-table">
+              <thead>
+                <tr>
+                  <th>Watershed</th>
+                  <th>District / State</th>
+                  <th>Area</th>
+                  <th>Health Score</th>
+                  <th>Interventions</th>
+                  <th>Veg Growth (24→26)</th>
+                  <th>Water Gain</th>
+                  <th>Erosion Vulnerability</th>
+                  <th>Quick Action</th>
+                </tr>
+              </thead>
+              <tbody id="diagnosticTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 3: Anomaly & Risk Alerts -->
+        <div id="tab-anomalies" class="ai-tab-pane" role="tabpanel">
+          <div class="anomaly-filter-bar">
+            <span>Filter Severity:</span>
+            <button class="btn-filter active" data-severity="all">All Alerts</button>
+            <button class="btn-filter" data-severity="HIGH">High Priority</button>
+            <button class="btn-filter" data-severity="MEDIUM">Medium</button>
+            <button class="btn-filter" data-severity="LOW">Low</button>
+          </div>
+          <div id="anomalyListContainer" class="anomaly-cards-grid"></div>
+        </div>
+
+        <!-- Tab 4: Predictive Forecast -->
+        <div id="tab-forecast" class="ai-tab-pane" role="tabpanel">
+          <div class="forecast-header">
+            <h3>Machine Learning Projected Trajectory (2027 – 2028)</h3>
+            <p class="muted">Extrapolates vegetative recovery and runoff harvesting capacity based on historical regression.</p>
+          </div>
+          <div id="forecastGridContainer" class="forecast-cards-grid"></div>
+        </div>
+
+        <!-- Tab 5: Prescriptive Recommendations -->
+        <div id="tab-recommendations" class="ai-tab-pane" role="tabpanel">
+          <div class="rec-header">
+            <h3>Optimized Structural Intervention Placement</h3>
+            <p class="muted">AI-identified coordinates and structures for maximum hydrological impact and budget efficiency.</p>
+          </div>
+          <div class="table-responsive">
+            <table class="recommendation-table">
+              <thead>
+                <tr>
+                  <th>Target Catchment</th>
+                  <th>Recommended Structure</th>
+                  <th>Suggested Quantity</th>
+                  <th>Est. Cost (Lakhs)</th>
+                  <th>Target Impact</th>
+                  <th>Implementation Priority</th>
+                </tr>
+              </thead>
+              <tbody id="recommendationTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Watershed Explorer -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Watershed Explorer</h2>
+        <div class="explorer-controls">
+          <label for="watershedSelect" class="sr-only">Select Watershed</label>
+          <select id="watershedSelect" aria-label="Select watershed region"></select>
+        </div>
+      </div>
+      <div class="grid two">
+        <div id="watershedCard"></div>
+        <div>
+          <h3>Priority zones</h3>
+          <div id="zones"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Markers & Interactive GIS Section -->
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Map Markers &amp; Field Interventions</h2>
+          <p class="muted">Interactive prototype map uses representative coordinates. Click any marker or card to inspect details.</p>
+        </div>
+        <div class="panel-actions">
+          <button id="addInterventionBtn" type="button" class="btn-primary" aria-label="Add new intervention record">+ Add Intervention</button>
+          <button id="exportJsonBtn" type="button" class="btn-secondary" title="Export records as JSON" aria-label="Export records as JSON">📥 Export JSON</button>
+          <label class="btn-secondary file-upload-label" title="Import records from JSON">
+            📤 Import JSON
+            <input type="file" id="importJsonInput" accept=".json,application/json" class="sr-only" aria-label="Import JSON records file">
+          </label>
+          <button id="resetDemoBtn" type="button" class="btn-ghost" title="Reset to initial seed demo data" aria-label="Reset to initial demo data">🔄 Reset Demo</button>
+        </div>
+      </div>
+
+      <!-- Filters Toolbar -->
+      <div class="toolbar" role="search" aria-label="Filter interventions">
+        <input id="markerSearchInput" type="search" placeholder="Search village, district, or ID…" aria-label="Search village, district, or ID">
+        <select id="typeFilter" aria-label="Filter by structure type">
+          <option value="all">All Structure Types</option>
+          <option value="Check Dam">Check Dam</option>
+          <option value="Farm Pond">Farm Pond</option>
+          <option value="Contour Bund">Contour Bund</option>
+          <option value="Percolation Pond">Percolation Pond</option>
+          <option value="Afforestation">Afforestation</option>
+        </select>
+        <select id="statusFilter" aria-label="Filter by implementation status">
+          <option value="all">All Statuses</option>
+          <option value="Completed">Completed</option>
+          <option value="Under Monitoring">Under Monitoring</option>
+        </select>
+        <button id="clearFiltersBtn" type="button" class="btn-sm">Clear Filters</button>
+      </div>
+
+      <!-- Real Interactive Map -->
+      <div class="map-wrapper">
+        <div id="map" class="map-view" role="region" aria-label="Geospatial watershed intervention map"></div>
+        <div id="mapFallback" class="map-fallback" style="display:none;">
+          <p>⚠️ Map tiles currently loading or unavailable offline. Showing coordinate list below.</p>
+        </div>
+        <div class="map-legend" aria-label="Map legend">
+          <span><i class="dot dot-checkdam"></i> Check Dam</span>
+          <span><i class="dot dot-pond"></i> Farm Pond / Percolation</span>
+          <span><i class="dot dot-bund"></i> Contour Bund</span>
+          <span><i class="dot dot-forest"></i> Afforestation</span>
+          <span><i class="dot dot-zone"></i> Priority Zone</span>
+        </div>
+      </div>
+
+      <!-- Intervention Records Grid -->
+      <div id="markers" class="marker-grid"></div>
+    </section>
+
+    <!-- Geo-coded Image Intelligence -->
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Geo-coded Image Intelligence</h2>
+          <p class="muted">Field photography linked to GPS coordinates, detected objects, and review statuses.</p>
+        </div>
+        <div class="image-filters" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <button id="uploadImageModalBtn" type="button" class="btn-primary" aria-label="Upload Geo-Coded Field Image">📷 Upload Field Photo</button>
+          <label for="imageStatusFilter" class="sr-only">Filter by Review Status</label>
+          <select id="imageStatusFilter" aria-label="Filter by image review status">
+            <option value="all">All Images</option>
+            <option value="Verified">Verified Only</option>
+            <option value="Pending Review">Pending Review</option>
+          </select>
+        </div>
+      </div>
+      <div id="images" class="image-grid"></div>
+    </section>
+
+    <!-- Before / After Change Detection -->
+    <section class="panel">
+      <h2>Before / After Change Detection</h2>
+      <p class="muted">Temporal satellite analysis comparison between baseline 2024 and 2026 monitoring periods.</p>
+      <div id="changes" class="change-grid"></div>
+    </section>
+
+    <!-- Prototype Analytics & Dynamic Charts -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Prototype Analytics &amp; Trends</h2>
+        <span id="chartWatershedBadge" class="tag tag-highlight">Kaveri Watershed</span>
+      </div>
+      <div class="grid two">
+        <div class="chart-box">
+          <h3>Vegetation Trend (NDVI Coverage %)</h3>
+          <canvas id="vegChart" width="600" height="260" role="img" aria-label="Vegetation coverage percentage trend chart"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>Surface Water Area Trend (km²)</h3>
+          <canvas id="waterChart" width="600" height="260" role="img" aria-label="Surface water area in square kilometers trend chart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- JalDrishti AI Assistant -->
+    <section class="panel">
+      <h2>JalDrishti AI Assistant</h2>
+      <p class="muted">Interactive demo decision-support assistant grounded in selected watershed data.</p>
+      <div class="chat">
+        <div id="chatLog" class="chatlog" role="log" aria-live="polite"></div>
+        <div class="chatbar">
+          <input id="question" type="text" placeholder="Ask: Which area needs attention in this watershed?" aria-label="Ask JalDrishti AI Assistant">
+          <button id="ask" type="button" aria-label="Send query to JalDrishti AI">Ask AI</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prototype Notice -->
+    <section class="panel">
+      <h2>Prototype Notice</h2>
+      <p class="notice">All displayed values, coordinates, images and analytics in this package are representative demonstration data created for the SIH prototype. They must not be presented as official SRISHTI-DRISHTI or government measurements.</p>
+    </section>
+  </main>
+
+  <!-- Add / Edit Record Modal -->
+  <dialog id="recordModal" class="modal-dialog" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Add New Intervention</h3>
+        <button id="closeModalBtn" type="button" class="btn-close" aria-label="Close dialog">&times;</button>
+      </div>
+      <form id="interventionForm" class="modal-form">
+        <input type="hidden" id="editRecordId" value="">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="formWatershed">Watershed *</label>
+            <select id="formWatershed" required></select>
+          </div>
+          <div class="form-group">
+            <label for="formType">Structure Type *</label>
+            <select id="formType" required>
+              <option value="Check Dam">Check Dam</option>
+              <option value="Farm Pond">Farm Pond</option>
+              <option value="Contour Bund">Contour Bund</option>
+              <option value="Percolation Pond">Percolation Pond</option>
+              <option value="Afforestation">Afforestation</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="formVillage">Village Name *</label>
+            <input type="text" id="formVillage" placeholder="e.g. Mettur" required>
+          </div>
+          <div class="form-group">
+            <label for="formDistrict">District *</label>
+            <input type="text" id="formDistrict" placeholder="e.g. Salem" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="formLatitude">Latitude (GPS) *</label>
+            <input type="number" id="formLatitude" step="any" placeholder="e.g. 11.6643" required>
+          </div>
+          <div class="form-group">
+            <label for="formLongitude">Longitude (GPS) *</label>
+            <input type="number" id="formLongitude" step="any" placeholder="e.g. 78.1460" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="formDate">Inspection / Record Date</label>
+            <input type="date" id="formDate" required>
+          </div>
+          <div class="form-group">
+            <label for="formStatus">Status</label>
+            <select id="formStatus">
+              <option value="Completed">Completed</option>
+              <option value="Under Monitoring">Under Monitoring</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="formCondition">Condition</label>
+            <select id="formCondition">
+              <option value="Good">Good</option>
+              <option value="Excellent">Excellent</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Damaged">Damaged</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="formImpact">Estimated Impact</label>
+            <select id="formImpact">
+              <option value="Positive">Positive</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Pending">Pending</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="formImageFile">Attach Field Image (Optional)</label>
+          <input type="file" id="formImageFile" accept="image/*">
+          <small class="muted">Upload a photo to automatically link geo-coded image metadata.</small>
+          <div id="imagePreviewContainer" class="image-preview" style="display:none;">
+            <img id="imagePreviewImg" src="" alt="Image preview">
+          </div>
+        </div>
+
+        <div id="formValidationMsg" class="form-error" style="display:none;" role="alert"></div>
+
+        <div class="modal-footer">
+          <button id="deleteRecordBtn" type="button" class="btn-danger" style="display:none;">Delete Record</button>
+          <div class="modal-footer-right">
+            <button id="cancelModalBtn" type="button" class="btn-secondary">Cancel</button>
+            <button type="submit" class="btn-primary">Save Intervention</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Dedicated Geo-Coded Image Upload Modal -->
+  <dialog id="imageUploadModal" class="modal-dialog" aria-labelledby="imageUploadModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="imageUploadModalTitle">Upload Geo-Coded Field Photography</h3>
+        <button id="closeImageUploadModalBtn" type="button" class="btn-close" aria-label="Close dialog">&times;</button>
+      </div>
+      <form id="imageUploadForm" class="modal-form">
+        <div class="form-group">
+          <label for="uploadPhotoInput">Select or Capture Field Photo *</label>
+          <input type="file" id="uploadPhotoInput" accept="image/*" capture="environment" required>
+          <small class="muted">Upload image from camera or device storage (JPEG, PNG, WEBP).</small>
+          <div id="uploadPhotoPreviewBox" style="display:none; margin-top:10px; max-height:220px; overflow:hidden; border-radius:8px; border:1px solid #cbd5e1; text-align:center; background:#0f172a;">
+            <img id="uploadPhotoPreviewImg" src="" alt="Uploaded field photo preview" style="max-width:100%; max-height:220px; display:inline-block; object-fit:contain;">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="uploadWatershedSelect">Target Watershed *</label>
+            <select id="uploadWatershedSelect" required></select>
+          </div>
+          <div class="form-group">
+            <label for="uploadStructureType">Structure Type *</label>
+            <select id="uploadStructureType" required>
+              <option value="Check Dam">Check Dam</option>
+              <option value="Farm Pond">Farm Pond</option>
+              <option value="Contour Bund">Contour Bund</option>
+              <option value="Percolation Pond">Percolation Pond</option>
+              <option value="Afforestation">Afforestation</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="uploadVillage">Village / Location *</label>
+            <input type="text" id="uploadVillage" placeholder="e.g. Kolathur" required>
+          </div>
+          <div class="form-group">
+            <label for="uploadDate">Capture Date *</label>
+            <input type="date" id="uploadDate" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="uploadLatitude">Latitude (°N) *</label>
+            <input type="number" step="0.0001" id="uploadLatitude" required>
+          </div>
+          <div class="form-group">
+            <label for="uploadLongitude">Longitude (°E) *</label>
+            <input type="number" step="0.0001" id="uploadLongitude" required>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <button id="autoGpsBtn" type="button" class="btn-sm btn-secondary" style="width:100%;">
+            📡 Auto-Detect Current GPS Coordinates
+          </button>
+          <div id="gpsStatusMessage" class="muted" style="font-size:12px; margin-top:4px;"></div>
+        </div>
+
+        <div class="modal-footer">
+          <div></div>
+          <div class="modal-footer-right">
+            <button id="cancelImageUploadBtn" type="button" class="btn-secondary">Cancel</button>
+            <button type="submit" class="btn-primary">Geotag &amp; Save Photo</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Executive Audit Report Modal -->
+  <dialog id="auditReportModal" class="modal-dialog modal-report-dialog" aria-labelledby="reportModalTitle">
+    <div class="modal-content modal-report-content">
+      <div class="modal-header">
+        <h3 id="reportModalTitle">Executive SIH Watershed Intelligence Report</h3>
+        <div class="modal-header-actions">
+          <button id="printReportBtn" type="button" class="btn-primary">🖨️ Print / Save PDF</button>
+          <button id="closeReportModalBtn" type="button" class="btn-close" aria-label="Close dialog">&times;</button>
+        </div>
+      </div>
+      <div id="reportContainer" class="report-scroll-container"></div>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification Popup -->
+  <div id="toast" class="toast-popup" role="status" aria-live="polite"></div>
+
+  <!-- Leaflet Map Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Application Core & AI Analyzer -->
+  <script src="data.js"></script>
+  <script src="analyzer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

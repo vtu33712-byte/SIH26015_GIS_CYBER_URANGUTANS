@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="260" viewBox="0 0 440 260">
+<defs><linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#cceeff"/><stop offset="1" stop-color="#f4fbff"/></linearGradient></defs>
+<rect width="440" height="260" fill="url(#sky)"/><ellipse cx="220" cy="150" rx="145" ry="55" fill="#48a7d7"/><ellipse cx="220" cy="150" rx="105" ry="35" fill="#74c3e5"/><path d="M40 200 Q100 160 150 205 T270 205 T400 200" fill="none" stroke="#4c8d43" stroke-width="30"/><circle cx="75" cy="70" r="35" fill="#6aaa50"/><circle cx="120" cy="62" r="42" fill="#5b9c4a"/>
+<rect x="15" y="15" width="410" height="52" rx="12" fill="rgba(255,255,255,.88)"/>
+<text x="32" y="39" font-family="Arial" font-size="17" font-weight="700" fill="#16324f">Percolation Pond • Pavoorchatram</text>
+<text x="32" y="58" font-family="Arial" font-size="11" fill="#526b7d">INT-032 • 8.9471, 77.3482</text>
+<text x="220" y="246" text-anchor="middle" font-family="Arial" font-size="10" fill="#35576e">REPRESENTATIVE PROTOTYPE IMAGE • DEMO DATA</text>
+</svg>
