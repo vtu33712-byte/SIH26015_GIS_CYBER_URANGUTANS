@@ -100,7 +100,6 @@ function App() {
             <div className={role === 'government' ? 'access-badge government' : 'access-badge'}>{role === 'government' ? <><LockKeyhole size={13}/> GOVERNMENT PORTAL</> : <><Users size={13}/> PUBLIC PORTAL</>}</div>
             <div className="command-center-heading"><span>NAVIGATION</span></div>
             <nav aria-label="Command Center navigation">{visibleNav.map(({ id, label, icon: Icon }) => <button type="button" key={id} title={label} aria-current={view === id ? 'page' : undefined} className={view === id ? 'active' : ''} onClick={() => navigate(id)}><Icon size={18}/><span>{role === 'public' && id === 'overview' ? 'Overview' : role === 'government' && id === 'watersheds' ? 'Watersheds' : role === 'government' && id === 'insights' ? 'Spatial Analytics' : label}</span>{id === 'operations' && <em>3</em>}</button>)}</nav>
-            <div className="district"><span className="pulse"></span><div><small>Monitoring area</small><b>Odisha · Kandhamal</b></div><ChevronDown size={15}/></div>
             <button className="side-foot logout" onClick={logout}><LogOut size={17}/><span>Sign out</span></button>
           </aside>
           <section className="shell">
